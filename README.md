@@ -30,6 +30,8 @@ Configuration
 
 Go to Settings > Integrations > IMAP User Authentication
 
+![screenshot](https://raw.githubusercontent.com/RocketMan/plugin-imap-user-auth/master/screenshot.png "Settings")
+
 * **In the `Domain` field**, specify the domain name suffix for IMAP
     authentication
 
