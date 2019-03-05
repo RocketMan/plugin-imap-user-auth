@@ -37,9 +37,9 @@ Go to Settings > Integrations > IMAP User Authentication
 
 Specify the domain name for IMAP authentication
 
-Example:  If your IMAP usernames are of the form user@domain.com,
-then you will specify `domain.com` as the value for Domain; by default,
-the plugin will authenticate to the IMAP server at domain.com.
+Example:  If your IMAP usernames are of the form user@example.org,
+then you will specify `example.org` as the value for Domain; by default,
+the plugin will authenticate to the IMAP server at example.org.
 
 **IMPORTANT:** If your IMAP usernames are simple names with no domain
 suffix, then **leave this field blank** and instead use Mailbox to
@@ -79,7 +79,7 @@ user.  The `Disallow login form` checkbox must NOT be ticked.
 
 The Kanboard username should match the IMAP username, exclusive of any
 domain suffix.  If the IMAP username includes a domain suffix (e.g.,
-user@domain.com), then specify the domain in the Domain setting above.
+user@example.org), then specify the domain in the Domain setting above.
 In this case, the Kanboard username should be just the user portion of
 the IMAP username.  When logging into Kanboard, the user may specify
 either the user portion only or the fully qualified username.
