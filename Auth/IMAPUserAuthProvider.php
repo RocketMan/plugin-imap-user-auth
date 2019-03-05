@@ -25,14 +25,14 @@ class IMAPUserAuthProvider implements PasswordAuthenticationProviderInterface {
     protected $db;
 
     const DEFAULT_MAILBOX='{%DOMAIN%:993/imap/ssl/novalidate-cert/notls}';
-    
+
     public function __construct($configModel, $db) {
         $this->mailbox = $configModel->get('plugin_imap_user_auth_mailbox', '');
         $this->domain = $configModel->get('plugin_imap_user_auth_domain', '');
-        
+
         $this->db = $db;
     }
-    
+
     public function getUser() {
         if(empty($this->userinfo))
             return null;
@@ -56,20 +56,22 @@ class IMAPUserAuthProvider implements PasswordAuthenticationProviderInterface {
         $mailbox = $this->mailbox;
         if(empty($mailbox) && !empty($this->domain))
             $mailbox = str_replace('%DOMAIN%', $this->domain, self::DEFAULT_MAILBOX);
-            
+
         if(!function_exists('imap_open') || empty($mailbox))
             return false;
 
+        // supply curly braces if not already present
+        if(strpos('x' . trim($mailbox), '{', 1) != 1)
+            $mailbox = '{' . $mailbox . '}';
+
+        $username = $this->username;
         if(!empty($this->domain)) {
             $pieces = explode('@', $this->username);
             if(count($pieces) == 1)
-                $username = $this->username . "@" . $this->domain;
-            else if(count($pieces) == 2 && $pieces[1] == $this->domain) {
-                $username = $this->username;
+                $username = $this->username . '@' . $this->domain;
+            else if(count($pieces) == 2 && $pieces[1] == $this->domain)
                 $this->username = $pieces[0];
-            }
-        } else
-            $username = $this->username;
+        }
 
         // lookup user in the local database
         $user = $this->db
@@ -86,9 +88,8 @@ class IMAPUserAuthProvider implements PasswordAuthenticationProviderInterface {
             return false;
 
         // validate user's credentials via IMAP
-        $mbox = @imap_open($mailbox, $username, $this->password,
-            OP_HALFOPEN, 1);
-            
+        $mbox = @imap_open($mailbox, $username, $this->password, OP_HALFOPEN, 1);
+
         if($mbox !== FALSE) {
             // success!
             imap_close($mbox);

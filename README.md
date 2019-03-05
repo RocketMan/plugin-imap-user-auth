@@ -12,7 +12,8 @@ Author
 Requirements
 ------------
 
-- Kanboard >= 1.0.35
+- Kanboard >= 1.2.8
+- PHP IMAP plugin
 
 Installation
 ------------
@@ -32,31 +33,38 @@ Go to Settings > Integrations > IMAP User Authentication
 
 ![screenshot](https://raw.githubusercontent.com/RocketMan/plugin-imap-user-auth/master/screenshot.png "Settings")
 
-* **Domain**: Specify the domain name for IMAP authentication
+### Domain
 
-The value specified for this option will be appended to the username.
-In addition, the plugin will use this value as the address of the IMAP
-server.
+Specify the domain name for IMAP authentication
 
-For example, if your IMAP usernames are of the format user@domain.com,
-then you will specify 'domain.com' as the value for Domain; by default,
+Example:  If your IMAP usernames are of the form user@domain.com,
+then you will specify `domain.com` as the value for Domain; by default,
 the plugin will authenticate to the IMAP server at domain.com.
 
-If your IMAP usernames are simple names with no domain suffix, then
-leave this field blank and instead use Mailbox below to specify the server.
+**IMPORTANT:** If your IMAP usernames are simple names with no domain
+suffix, then **leave this field blank** and instead use Mailbox to
+specify the server.
 
-* **Mailbox**:  **Leave this field blank**, unless your IMAP server
-has a different address to the Domain specified above, **or** usernames
-in your IMAP server do not use domain name suffixes.
+### Mailbox
 
-The value of the Mailbox option is of the form:
+**Leave this field blank**, unless Domain is blank, or
+your IMAP server has a different address from the domain name
+specified in Domain.
 
-    {some.server.com:993/imap/ssl/novalidate-cert/notls}
+Some example Mailbox settings:
 
-See [imap_open](http://php.net/manual/en/function.imap-open.php) for
-a discussion of the format and a list of the available flags.
+  * `imap.example.org:993/imap/ssl/notls` *(IMAP with implicit TLS)*
+  * `imap.example.org:143/imap/tls` *(IMAP with explicit TLS)*
 
-You may specify Mailbox alone or in combination with Domain.
+Where *imap.example.org* is your IMAP server.
+
+**IMPORTANT:** If your IMAP TLS certificate is invalid, then disable
+certificate validation by adding `/novalidate-cert` to the Mailbox setting.
+
+See [imap_open](http://php.net/manual/en/function.imap-open.php) for a
+discussion of the format of Mailbox and a list of the available flags.
+
+**NOTE:** You may specify Mailbox alone or in combination with Domain.
 
 If both options are specified, the value specified by Mailbox is the
 address of the IMAP server, while the value specified by Domain will
