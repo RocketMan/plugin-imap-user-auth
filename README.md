@@ -35,7 +35,7 @@ Go to Settings > Integrations > IMAP User Authentication
 
 ### Domain
 
-Specify the domain name for IMAP authentication
+Specify the domain name for IMAP authentication.
 
 Example:  If your IMAP usernames are of the form user@example.org,
 then you will specify 'example.org' as the value for Domain; by default,
@@ -56,7 +56,8 @@ Some example IMAP Server settings:
 
   * `imap.example.org:993/imap/ssl/notls` *(IMAP with implicit TLS)*
   * `imap.example.org:143/imap/tls` *(IMAP with explicit TLS)*
-  * `localhost:993/imap/ssl/notls` *(IMAP with implicit TLS to localhost)*
+  * `localhost:993/imap/ssl/notls` *(IMAP with implicit TLS)*
+  * `localhost:110/pop3/tls` *(POP3 with explicit TLS)*
 
 Where *imap.example.org* is your IMAP server.  If your IMAP server is
 on your webserver, you may use the string 'localhost' in place of the
