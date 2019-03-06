@@ -1,5 +1,9 @@
 ## Release Notes for plugin-imap-user-auth
 
+### v1.0.2
+
+  * Updated user-facing plugin name (non-semantic change)
+
 ### v1.0.1
 
   * Renamed configuration setting 'Mailbox' to 'IMAP Server'
