@@ -1,5 +1,5 @@
-IMAP User Authentication
-========================
+Kanboard IMAP User Authentication Plugin
+========================================
 
 Login to Kanboard using your IMAP credentials
 
