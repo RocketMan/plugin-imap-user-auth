@@ -56,12 +56,8 @@ Some example IMAP Server settings:
 
   * `imap.example.org:993/imap/ssl/notls` *(IMAP with implicit TLS)*
   * `imap.example.org:143/imap/tls` *(IMAP with explicit TLS)*
-  * `localhost:993/imap/ssl/notls` *(IMAP with implicit TLS)*
-  * `localhost:110/pop3/tls` *(POP3 with explicit TLS)*
 
-Where *imap.example.org* is your IMAP server.  If your IMAP server is
-on your webserver, you may use the string 'localhost' in place of the
-server name.
+Where *imap.example.org* is your IMAP server.
 
 **IMPORTANT:** If your IMAP TLS certificate is invalid, then disable
 certificate validation by adding `/novalidate-cert` to the IMAP Server setting.
