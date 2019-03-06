@@ -31,7 +31,7 @@ Configuration
 
 Go to Settings > Integrations > IMAP User Authentication
 
-![screenshot](https://raw.githubusercontent.com/RocketMan/plugin-imap-user-auth/master/screenshot.png "Settings")
+![screenshot](https://raw.githubusercontent.com/RocketMan/plugin-imap-user-auth/docfix/screenshot.png "Settings")
 
 ### Domain
 
