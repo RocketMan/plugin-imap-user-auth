@@ -1,7 +1,7 @@
-plugin-imap-user-auth
-=====================
+IMAP User Authentication
+========================
 
-IMAP user authentication for Kanboard
+Login to Kanboard using your IMAP credentials
 
 Author
 ------

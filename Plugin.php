@@ -31,12 +31,12 @@ class Plugin extends Base
 
     public function getPluginName()
     {
-        return 'plugin-imap-user-auth';
+        return 'IMAP User Authentication';
     }
 
     public function getPluginDescription()
     {
-        return t('IMAP user authentication for Kanboard');
+        return t('Login to Kanboard using your IMAP credentials');
     }
 
     public function getPluginAuthor()
