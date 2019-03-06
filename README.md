@@ -38,35 +38,39 @@ Go to Settings > Integrations > IMAP User Authentication
 Specify the domain name for IMAP authentication
 
 Example:  If your IMAP usernames are of the form user@example.org,
-then you will specify `example.org` as the value for Domain; by default,
+then you will specify 'example.org' as the value for Domain; by default,
 the plugin will authenticate to the IMAP server at example.org.
 
 **IMPORTANT:** If your IMAP usernames are simple names with no domain
-suffix, then **leave this field blank** and instead use Mailbox to
+suffix, then **leave this field blank** and instead use IMAP Server to
 specify the server.
 
-### Mailbox
+### IMAP Server
 
-**Leave this field blank**, unless Domain is blank, or
+Address of your IMAP server.  In many cases, you may **leave this
+field blank**.  This setting is necessary only if Domain is blank or
 your IMAP server has a different address from the domain name
 specified in Domain.
 
-Some example Mailbox settings:
+Some example IMAP Server settings:
 
   * `imap.example.org:993/imap/ssl/notls` *(IMAP with implicit TLS)*
   * `imap.example.org:143/imap/tls` *(IMAP with explicit TLS)*
+  * `localhost:993/imap/ssl/notls` *(IMAP with implicit TLS to localhost)*
 
-Where *imap.example.org* is your IMAP server.
+Where *imap.example.org* is your IMAP server.  If your IMAP server is
+on your webserver, you may use the string 'localhost' in place of the
+server name.
 
 **IMPORTANT:** If your IMAP TLS certificate is invalid, then disable
-certificate validation by adding `/novalidate-cert` to the Mailbox setting.
+certificate validation by adding `/novalidate-cert` to the IMAP Server setting.
 
 See [imap_open](http://php.net/manual/en/function.imap-open.php) for a
-discussion of the format of Mailbox and a list of the available flags.
+discussion of the format of this field and a list of the available flags.
 
-**NOTE:** You may specify Mailbox alone or in combination with Domain.
+**NOTE:** You may specify IMAP Server alone or in combination with Domain.
 
-If both options are specified, the value specified by Mailbox is the
+If both options are specified, the value specified by IMAP Server is the
 address of the IMAP server, while the value specified by Domain will
 be appended to the username.
 

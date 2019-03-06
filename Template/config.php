@@ -6,7 +6,7 @@
     <?= $this->form->label(t('Domain'), 'plugin_imap_user_auth_domain') ?>
     <?= $this->form->text('plugin_imap_user_auth_domain', $values) ?>
 
-    <?= $this->form->label(t('Mailbox'), 'plugin_imap_user_auth_mailbox') ?>
+    <?= $this->form->label(t('IMAP Server'), 'plugin_imap_user_auth_mailbox') ?>
     <?= $this->form->text('plugin_imap_user_auth_mailbox', $values) ?>
 
     <div class="form-actions">
