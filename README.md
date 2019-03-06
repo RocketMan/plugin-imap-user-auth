@@ -12,7 +12,8 @@ Author
 Requirements
 ------------
 
-- Kanboard >= 1.0.35
+- Kanboard >= 1.2.8
+- PHP IMAP plugin
 
 Installation
 ------------
@@ -32,33 +33,41 @@ Go to Settings > Integrations > IMAP User Authentication
 
 ![screenshot](https://raw.githubusercontent.com/RocketMan/plugin-imap-user-auth/master/screenshot.png "Settings")
 
-* **Domain**: Specify the domain name for IMAP authentication
+### Domain
 
-The value specified for this option will be appended to the username.
-In addition, the plugin will use this value as the address of the IMAP
-server.
+Specify the domain name for IMAP authentication.
 
-For example, if your IMAP usernames are of the format user@domain.com,
-then you will specify 'domain.com' as the value for Domain; by default,
-the plugin will authenticate to the IMAP server at domain.com.
+Example:  If your IMAP usernames are of the form user@example.org,
+then you will specify 'example.org' as the value for Domain; by default,
+the plugin will authenticate to the IMAP server at example.org.
 
-If your IMAP usernames are simple names with no domain suffix, then
-leave this field blank and instead use Mailbox below to specify the server.
+**IMPORTANT:** If your IMAP usernames are simple names with no domain
+suffix, then **leave this field blank** and instead use IMAP Server to
+specify the server.
 
-* **Mailbox**:  **Leave this field blank**, unless your IMAP server
-has a different address to the Domain specified above, **or** usernames
-in your IMAP server do not use domain name suffixes.
+### IMAP Server
 
-The value of the Mailbox option is of the form:
+Address of your IMAP server.  In many cases, you may **leave this
+field blank**.  This setting is necessary only if Domain is blank or
+your IMAP server has a different address from the domain name
+specified in Domain.
 
-    {some.server.com:993/imap/ssl/novalidate-cert/notls}
+Some example IMAP Server settings:
 
-See [imap_open](http://php.net/manual/en/function.imap-open.php) for
-a discussion of the format and a list of the available flags.
+  * `imap.example.org:993/imap/ssl/notls` *(IMAP with implicit TLS)*
+  * `imap.example.org:143/imap/tls` *(IMAP with explicit TLS)*
 
-You may specify Mailbox alone or in combination with Domain.
+Where *imap.example.org* is your IMAP server.
 
-If both options are specified, the value specified by Mailbox is the
+**IMPORTANT:** If your IMAP TLS certificate is invalid, then disable
+certificate validation by adding `/novalidate-cert` to the IMAP Server setting.
+
+See [imap_open](http://php.net/manual/en/function.imap-open.php) for a
+discussion of the format of this field and a list of the available flags.
+
+**NOTE:** You may specify IMAP Server alone or in combination with Domain.
+
+If both options are specified, the value specified by IMAP Server is the
 address of the IMAP server, while the value specified by Domain will
 be appended to the username.
 
@@ -71,7 +80,7 @@ user.  The `Disallow login form` checkbox must NOT be ticked.
 
 The Kanboard username should match the IMAP username, exclusive of any
 domain suffix.  If the IMAP username includes a domain suffix (e.g.,
-user@domain.com), then specify the domain in the Domain setting above.
+user@example.org), then specify the domain in the Domain setting above.
 In this case, the Kanboard username should be just the user portion of
 the IMAP username.  When logging into Kanboard, the user may specify
 either the user portion only or the fully qualified username.
