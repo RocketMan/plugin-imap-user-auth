@@ -1,5 +1,5 @@
-Kanboard IMAP User Authentication Plugin
-========================================
+IMAP User Authentication Plugin for Kanboard
+============================================
 
 Login to Kanboard using your IMAP credentials
 
@@ -13,7 +13,7 @@ Requirements
 ------------
 
 - Kanboard >= 1.2.8
-- PHP IMAP plugin
+- PHP IMAP module
 
 Installation
 ------------
@@ -58,6 +58,11 @@ Some example IMAP Server settings:
   * `imap.example.org:143/imap/tls` *(IMAP with explicit TLS)*
 
 Where *imap.example.org* is your IMAP server.
+
+**NOTE:** For version 1.0.0 of this plugin, the IMAP Server field was
+known as Mailbox, and its value must be enclosed in curly braces;
+e.g., `{Imap.example.org:143/imap/tls}`.  For later versions, the curly
+braces are optional.
 
 **IMPORTANT:** If your IMAP TLS certificate is invalid, then disable
 certificate validation by adding `/novalidate-cert` to the IMAP Server setting.

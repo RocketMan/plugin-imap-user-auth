@@ -1,4 +1,4 @@
-## Release Notes for plugin-imap-user-auth
+## Release Notes -- IMAP User Authentication Plugin for Kanboard
 
 ### v1.0.2
 
