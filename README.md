@@ -47,10 +47,10 @@ specify the server.
 
 ### IMAP Server
 
-Address of your IMAP server.  In many cases, you may **leave this
-field blank**.  This setting is necessary only if Domain is blank or
-your IMAP server has a different address from the domain name
-specified in Domain.
+Address of your IMAP server, together with optional port number and
+flags.  In many cases, you may **leave this field blank**.  This
+setting is necessary only if Domain is blank or your IMAP server has a
+different address from the domain name specified in Domain.
 
 Some example IMAP Server settings:
 
@@ -58,11 +58,6 @@ Some example IMAP Server settings:
   * `imap.example.org:143/imap/tls` *(IMAP with explicit TLS)*
 
 Where *imap.example.org* is your IMAP server.
-
-**NOTE:** For version 1.0.0 of this plugin, the IMAP Server field was
-known as Mailbox, and its value must be enclosed in curly braces;
-e.g., `{Imap.example.org:143/imap/tls}`.  For later versions, the curly
-braces are optional.
 
 **IMPORTANT:** If your IMAP TLS certificate is invalid, then disable
 certificate validation by adding `/novalidate-cert` to the IMAP Server setting.
