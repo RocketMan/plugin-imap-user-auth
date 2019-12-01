@@ -22,15 +22,15 @@ class IMAPUserAuthProvider implements PasswordAuthenticationProviderInterface {
 
     protected $mailbox;
     protected $domain;
-    protected $db;
+    protected $plugin;
 
     const DEFAULT_MAILBOX='{%DOMAIN%:993/imap/ssl/novalidate-cert/notls}';
 
-    public function __construct($configModel, $db) {
-        $this->mailbox = $configModel->get('plugin_imap_user_auth_mailbox', '');
-        $this->domain = $configModel->get('plugin_imap_user_auth_domain', '');
+    public function __construct($plugin) {
+        $this->mailbox = $plugin->configModel->get('plugin_imap_user_auth_mailbox', '');
+        $this->domain = $plugin->configModel->get('plugin_imap_user_auth_domain', '');
 
-        $this->db = $db;
+        $this->plugin = $plugin;
     }
 
     public function getUser() {
@@ -57,8 +57,17 @@ class IMAPUserAuthProvider implements PasswordAuthenticationProviderInterface {
         if(empty($mailbox) && !empty($this->domain))
             $mailbox = str_replace('%DOMAIN%', $this->domain, self::DEFAULT_MAILBOX);
 
-        if(!function_exists('imap_open') || empty($mailbox))
-            return false;
+        if(!function_exists('imap_open')) {
+            $this->plugin->raiseException([
+                t("The PHP IMAP module is missing."),
+                t("See the [Documentation]({PluginHomepage}) for setup instructions.")
+            ]);
+        } else if(empty($mailbox)) {
+            $this->plugin->raiseException([
+                t("The plugin's configuration settings are missing."),
+                t("See the [Documentation]({PluginHomepage}) for setup instructions.")
+            ]);
+        }
 
         // supply curly braces if not already present
         if(strpos('x' . trim($mailbox), '{', 1) != 1)
@@ -74,7 +83,7 @@ class IMAPUserAuthProvider implements PasswordAuthenticationProviderInterface {
         }
 
         // lookup user in the local database
-        $user = $this->db
+        $user = $this->plugin->db
             ->table(UserModel::TABLE)
             ->columns('id')
             ->eq('username', $this->username)
