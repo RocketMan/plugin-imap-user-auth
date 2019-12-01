@@ -1,5 +1,9 @@
 ## Release Notes -- IMAP User Authentication Plugin for Kanboard
 
+### v1.0.3
+
+  * Improved reporting of installation and configuration issues
+
 ### v1.0.2
 
   * Updated user-facing plugin name (non-semantic change)
