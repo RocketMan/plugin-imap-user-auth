@@ -1,7 +1,11 @@
+notifications:
+  email: false
+
 language: php
 sudo: false
 
 php:
+  - 7.3
   - 7.2
   - 5.6
 
@@ -26,4 +30,4 @@ before_script:
   - ls -la plugins/
 
 script:
-  - phpunit -c tests/units.$DB.xml plugins/$PLUGIN/Test/
+  - ./vendor/bin/phpunit -c tests/units.$DB.xml plugins/$PLUGIN/Test/
