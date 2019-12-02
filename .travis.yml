@@ -10,7 +10,7 @@ env:
     - PLUGIN=IMAPUserAuth
     - KANBOARD_REPO=https://github.com/kanboard/kanboard.git
   matrix:
-    - DB=mysql
+    - DB=sqlite
 
 matrix:
   fast_finish: true
