@@ -1,6 +1,6 @@
 IMAP User Authentication Plugin for Kanboard
 ============================================
-[![Build Status](https://travis-ci.org/rocketman/plugin-imap-user-auth.svg?branch=master)](https://travis-ci.org/rocketman/plugin-imap-user-auth)
+[![Build Status](https://travis-ci.com/rocketman/plugin-imap-user-auth.svg?branch=master)](https://travis-ci.com/rocketman/plugin-imap-user-auth)
 
 Login to Kanboard using your IMAP credentials
 
