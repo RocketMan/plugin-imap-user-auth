@@ -25,6 +25,7 @@ install:
 before_script:
   - cd kanboard
   - composer install
+  - composer require elvanto/picodb
   - ls -la plugins/
 
 script:
